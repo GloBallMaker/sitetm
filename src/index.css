@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-color: #F4F1EA;
+    color: #101010;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  ::selection {
+    background-color: #582B43;
+    color: #F4F1EA;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #582B43;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .label-sm {
+    @apply text-xs font-medium uppercase tracking-label text-silver;
+  }
+
+  .label-lg {
+    @apply text-sm font-semibold uppercase tracking-label text-silver;
+  }
+
+  .rule-line {
+    @apply block w-full border-t border-ink/10;
+  }
+
+  .editorial-link {
+    @apply relative inline-flex items-center gap-2 transition-colors duration-300;
+  }
+
+  .editorial-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-px w-0 bg-cobalt transition-all duration-500 ease-out;
+  }
+
+  .editorial-link:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F1EA;
+}
+::-webkit-scrollbar-thumb {
+  background: #A6A6A1;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #582B43;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
